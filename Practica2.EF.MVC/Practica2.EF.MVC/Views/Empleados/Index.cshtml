@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Practica2.EF.MVC.Models.Employees>
+
+@{
+    ViewBag.Title = "Lista de empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Empleados</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>Nombre completo</th>
+        <th>Titulo</th>
+        <th>Ms./Dr.</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Fecha de ingreso</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Region</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NombreCompleto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
+    </td>
+    <td>
+        @item.BirthDate.Value.ToShortDateString()
+    </td>
+    <td>
+        @item.HireDate.Value.ToShortDateString()
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City)
+    </td>
+    <td>
+        @Practica2.EF.MVC.Controllers.EmpleadosController.NombreRegion(item.Region)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Editar", new { id=item.EmployeeID }) |
+        @Html.ActionLink("Detalles", "DetallesEmpleados", new { id = item.EmployeeID }) |
+        @Html.ActionLink("Eliminar", "EliminarEmpleado", new { id = item.EmployeeID }, new { @class = "eElimina" })
+    </td>
+</tr>
+}
+
+</table>
+
+@section scripts{
+    
+    <script>
+        $(".eElimina").click(function (event) {
+            if (!confirm('¿Estás seguro que quieres eliminar el Empleado seleccionado?')) {
+                event.preventDefault();
+            }
+        })
+    </script>
+
+    }
