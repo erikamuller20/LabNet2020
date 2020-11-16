@@ -1,0 +1,14 @@
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\DATOS.dll.config
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\DATOS.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\DATOS.pdb
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\ENTIDAD.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\EntityFramework.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\ENTIDAD.pdb
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\EntityFramework.xml
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\obj\Debug\DATOS.csprojAssemblyReference.cache
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\obj\Debug\DATOS.csproj.CoreCompileInputs.cache
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\obj\Debug\DATOS.csproj.CopyComplete
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\obj\Debug\DATOS.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\DATOS\obj\Debug\DATOS.pdb

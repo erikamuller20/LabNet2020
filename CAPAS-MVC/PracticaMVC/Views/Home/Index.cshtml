@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Empleados</h1>
+    <p><a href="~/Empleados" class="btn btn-primary btn-lg">Lista de empleados &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Clima en tiempo real</h3>
+        <h4>San Nicolás de los Arroyos</h4>
+
+        <ul>
+            <img src="https://i.pinimg.com/originals/f9/aa/a4/f9aaa4a9a402503edd577d665fb22d5b.gif" width="120" height="100" border="0">
+            <li>Cielo: @Model.wx_desc</li>
+            <li>Temperatura:@Model.temp_c°C</li>
+            <li>Sensación Térmica: @Model.feelslike_c°C</li>
+            <li>Viento: @Model.windspd_kts km/h</li>
+            <li>Humedad: @Model.humid_pct%</li>
+            <li>Visibilidad: @Model.vis_km km</li>
+        </ul>
+
+    </div>
+</div>

@@ -1,0 +1,178 @@
+﻿@model ENTIDAD.Employees
+
+@{
+    ViewBag.Title = "Crear Empleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    }
+
+<form action="@Url.Action("CrearEmpleado", "Empleados")" method="post" id="frmEmpleado">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Crear nuevo Empleado</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Apellido</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Nombre</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Titulo</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Titulo de cortesia</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TitleOfCourtesy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TitleOfCourtesy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fecha de Nacimiento</label>
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="BirthDate" id="BirthDate" />
+                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fecha de Ingreso</label>
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="HireDate" id="HireDate" />
+                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Dirección</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ciudad</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Region</label>
+            <div class="col-md-10">
+                @Html.Action("ListarRegion", "Empleados")
+                @Html.ValidationMessageFor(model => model.Region, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+
+    <script>
+
+        $("#frmEmpleado").submit(function (event) {
+            event.preventDefault(); //previene que la pag se recarge
+
+            var apellido = $("#LastName").val();
+            var nombre = $("#FirstName").val();
+            var fecNac = $("#BirthDate").val();
+            var fecIng = $("#HireDate").val();
+
+            if ($.trim(apellido) == "") {
+                alert("Debe ingresar el apellido del Empleado");
+                return;
+            }
+
+            if ($.trim(nombre) == "") {
+                alert("Debe ingresar el nombre del Empleado");
+                return;
+            }
+
+            if (fecNac == "" || fecIng == "") {
+                alert("Debe ingresar la fecha de nacimiento y fecha de ingreso del Empleado");
+                return;
+            }
+
+            if (!ValidarFechas(fecNac, fecIng)) {
+                alert("La Fecha de Ingreso no puede ser menor a la Fecha de Nacimiento");
+                return;
+
+            }
+
+            var post_url = $(this).attr("action"); //get form action url
+            var request_method = $(this).attr("method"); //get form GET/POST method
+            var form_data = $(this).serializeArray(); //Encode form elements for submission
+            console.log(form_data);
+
+            $.LoadingOverlay("show", {
+                image: "",
+                text: "Loading..."
+            });
+            setTimeout(function () {
+                $.LoadingOverlay("text", " ");
+            }, 2500);
+
+            $.ajax({
+                url: post_url,
+                type: request_method,
+                data: form_data
+            }).done(function (response) {
+                console.log(response);
+
+                if (response.ok) {
+                    alert("Empleado creado correctamente.");
+                    window.location = response.toRedirect;
+                }
+                else {
+                    alert(response.msg);
+                }
+
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+
+                //objet jqXHR es un objeto que contiene todos los datos de la solicitud ajax realizada,
+                // incluyendo la propiedad jqXHR.status que contiene, entre otros posibles, el cod de estado http de la respuesta.
+                //strin textstatus texto que describe el tipo de error que puede ser admas de null
+                // abort timeout no transport o parseerror
+                // errorthrown si hay un error http, contiene el trctp de la cabecera de http de estado
+                // ejemplo, para un error http 404 errorThrown es not found para error un http 500 es internal server errror.
+            });
+        });
+    </script>
+}

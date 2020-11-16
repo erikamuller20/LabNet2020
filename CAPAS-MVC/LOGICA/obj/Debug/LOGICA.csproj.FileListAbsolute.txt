@@ -1,0 +1,14 @@
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\LOGICA.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\LOGICA.pdb
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\DATOS.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\ENTIDAD.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\EntityFramework.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\DATOS.pdb
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\DATOS.dll.config
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\ENTIDAD.pdb
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\bin\Debug\EntityFramework.xml
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\obj\Debug\LOGICA.csprojAssemblyReference.cache
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\obj\Debug\LOGICA.csproj.CoreCompileInputs.cache
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\obj\Debug\LOGICA.csproj.CopyComplete
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\obj\Debug\LOGICA.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\LOGICA\obj\Debug\LOGICA.pdb

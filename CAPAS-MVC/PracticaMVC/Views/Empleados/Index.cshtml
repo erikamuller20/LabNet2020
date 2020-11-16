@@ -1,0 +1,133 @@
+﻿@model IEnumerable<ENTIDAD.Employees>
+
+@{
+    ViewBag.Title = "Lista de empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet"/>
+}
+
+
+<h2>Lista de Empleados</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "CrearEmpleado", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table" id="tableDemo">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Titulo</th>
+            <th>Titulo de cortesia</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Fecha de ingreso</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Region</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
+            </td>
+            <td>
+                @item.BirthDate.Value.ToShortDateString()
+            </td>
+            <td>
+                @item.HireDate.Value.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @PracticaMVC.Controllers.EmpleadosController.NombreRegion(item.Region)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-xs" title="Editar" href="@Url.Action("EditarEmpleado", "Empleados", new { id = item.EmployeeID })">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+
+                <a class="btn btn-info btn-xs" title="Detalles" href="@Url.Action("DetalleEmpleado", "Empleados", new { id = item.EmployeeID })">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+
+                <a class="btn btn-danger btn-xs" onclick="EliminarEmpleado(@item.EmployeeID)" title="Eliminar">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $('#tableDemo').DataTable({
+            "pageLenght": 5,
+            lenghtMEnu: [5, 10, 20, 50, 100, 200, 500],
+        });
+
+        function EliminarEmpleado(idEmpleado) {
+            $.confirm({
+                title: 'Eliminar Empleado',
+                content: '¿Estas seguro de eliminar el empleado seleccionado?',
+                buttons: {
+                    Confirmar: function () {
+
+                        $.ajax({
+                            url: "/empleados/EliminarEmpleado",
+                            type: "post",
+                            data: {
+                                idEmp: idEmpleado
+                            }
+                        }).done(function (response) {
+                            console.log(response);
+
+                            if (response.ok) {
+                                alert("Empleado Eliminado Correctamente.");
+                                window.location = response.toRedirect;
+                            }
+                            else {
+                                alert(response.msg);
+                            }
+
+                        }).fail(function (jqXHR, textStatus, errorThrown) {
+                            alert(textStatus);
+
+                        });
+                    },
+                    Cancelar: function () {
+
+                    },
+                }
+            });
+    }
+
+    </script>
+
+}

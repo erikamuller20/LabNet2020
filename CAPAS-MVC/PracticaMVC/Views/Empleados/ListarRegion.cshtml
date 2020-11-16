@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ENTIDAD.Region>
+
+<select class="form-control" id="Region" name="Region">
+
+
+    @foreach (var item in Model)
+    {
+        <option value="@item.RegionID">@item.RegionDescription</option>
+//sintaxis razor (una sintaxis simplificada mezcla cod html con c#)
+    }
+
+</select>

@@ -1,0 +1,6 @@
+C:\Users\erika.muller\Desktop\CAPAS-MVC\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\Users\erika.muller\Desktop\CAPAS-MVC\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+C:\Users\erika.muller\Desktop\CAPAS-MVC\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\Users\erika.muller\Desktop\CAPAS-MVC\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\Users\erika.muller\Desktop\CAPAS-MVC\ENTIDAD\obj\Debug\ENTIDAD.pdb
